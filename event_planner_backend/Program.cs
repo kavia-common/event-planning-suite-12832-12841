@@ -105,9 +105,11 @@ builder.Services.AddSingleton<EventPlanner.Domain.Repositories.IEventRepository,
 builder.Services.AddSingleton<EventPlanner.Domain.Repositories.IGuestRepository, EventPlanner.Infrastructure.Repositories.InMemoryGuestRepository>();
 
 builder.Services.AddScoped<EventPlanner.Application.Services.IAuthService, EventPlanner.Application.Services.AuthService>();
-builder.Services.AddScoped(EventPlanner.Application.Services.IUserService, EventPlanner.Application.Services.UserService>();
-builder.Services.AddScoped(EventPlanner.Application.Services.IEventService, EventPlanner.Application.Services.EventService>();
-builder.Services.AddScoped(EventPlanner.Application.Services.IGuestService, EventPlanner.Application.Services.GuestService>();
+
+// Register application services with proper generic type parameters
+builder.Services.AddScoped<EventPlanner.Application.Services.IUserService, EventPlanner.Application.Services.UserService>();
+builder.Services.AddScoped<EventPlanner.Application.Services.IEventService, EventPlanner.Application.Services.EventService>();
+builder.Services.AddScoped<EventPlanner.Application.Services.IGuestService, EventPlanner.Application.Services.GuestService>();
 
 var app = builder.Build();
 
